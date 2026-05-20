@@ -1,0 +1,178 @@
+/* Custom Font Implementation */
+@font-face {
+    font-family: 'pixel2';
+    src: url('fonts/vt323/VT323-Regular.ttf') format('truetype');
+}
+
+/* Base Terminal Theme */
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #a9b1d6;
+    --accent-color: #9ece6a; /* Terminal Green */
+    --accent-glow: 0px 0px 10px rgba(158, 206, 106, 0.4);
+    --card-bg: #16161e;
+    --border-color: #24283b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'pixel2', monospace, 'Courier New';
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    text-shadow: var(--accent-glow);
+}
+
+/* Header & Navigation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(10, 10, 10, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.headL .name {
+    font-size: 2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.headR {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.5rem;
+}
+
+/* Main Layout */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    flex-grow: 1;
+}
+
+/* Hero Section */
+.home1_flex {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.home1 h1 {
+    color: var(--accent-color);
+    text-shadow: var(--accent-glow);
+    font-size: 4rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #c0caf5;
+}
+
+/* Content Sections */
+.content-section {
+    margin: 4rem 0;
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border-color);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Terminal Style Box */
+.terminal-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 4px;
+    font-size: 1.2rem;
+}
+
+.prompt {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+
+.clean-list {
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.clean-list li {
+    margin-bottom: 0.5rem;
+}
+
+.clean-list li::before {
+    content: ">> ";
+    color: var(--accent-color);
+}
+
+/* Project Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: var(--accent-glow);
+}
+
+.card h3 {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: #565f89;
+    font-size: 1.2rem;
+}
