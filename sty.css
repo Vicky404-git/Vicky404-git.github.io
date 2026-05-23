@@ -152,13 +152,17 @@ header {
 
 .headR {
 
-    display: none;
+    display: flex;
+
+    align-items: center;
 
     flex-direction: column;
 
     width: 100%;
 
-    gap: 1rem;
+    gap: 2rem;
+
+    font-size: 1.2rem;
 
     padding-top: 1rem;
 
@@ -432,6 +436,28 @@ footer {
 ========================= */
 
 @media (max-width: 768px) {
+
+    .headR {
+
+        display: none;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 1rem;
+
+        padding-top: 1rem;
+
+        border-top: 1px dashed var(--border-color);
+
+        animation: terminalFade 0.2s ease;
+    }
+
+    .headR.active {
+        display: flex;
+    }
+
 
     .name {
         font-size: 1.5rem;
