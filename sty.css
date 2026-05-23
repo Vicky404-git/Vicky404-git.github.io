@@ -1,4 +1,3 @@
-```css
 @font-face {
     font-family: 'pixel2';
     src: url('fonts/vt323/VT323-Regular.ttf') format('truetype');
@@ -366,22 +365,51 @@ footer {
 
 @media (max-width: 768px) {
 
-    /* HEADER */
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
         flex-direction: column;
         align-items: flex-start;
 
         gap: 1rem;
+
+        padding: 1.2rem 1rem;
     }
 
     .headL {
         width: 100%;
 
+        display: flex;
+
         justify-content: space-between;
+
+        align-items: center;
+
+        gap: 1rem;
     }
 
-    /* NAV */
+    .name {
+        font-size: 1.5rem;
+    }
+
+    /* =========================
+       LS BUTTON
+    ========================= */
+
+    .mobile-menu-btn {
+
+        font-size: 0.8rem;
+
+        padding: 0.5rem 0.7rem;
+
+        white-space: nowrap;
+    }
+
+    /* =========================
+       NAV
+    ========================= */
 
     .headR {
         display: none;
@@ -412,36 +440,90 @@ footer {
         color: var(--accent-color);
     }
 
-    /* HERO */
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .container {
+        width: 100%;
+
+        padding: 1.5rem 1rem;
+    }
+
+    /* =========================
+       HERO BOX
+    ========================= */
+
+    .hero-box {
+        padding: 1.2rem;
+    }
+
+    .boot-log {
+        font-size: 0.8rem;
+    }
 
     .home1 h1 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
+
+        line-height: 1.2;
+
+        margin-bottom: 1.5rem;
     }
 
     .subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
+
+        line-height: 1.8;
+
+        margin-bottom: 1.2rem;
     }
 
     .AboutMe {
-        font-size: 1rem;
+        font-size: 0.95rem;
+
+        line-height: 1.8;
     }
 
-    /* TITLES */
+    /* =========================
+       SECTION TITLES
+    ========================= */
 
     .content-section h2 {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
 
-    /* GRID */
+    /* =========================
+       TERMINAL BOX
+    ========================= */
+
+    .terminal-box {
+        padding: 1.2rem;
+    }
+
+    /* =========================
+       GRID
+    ========================= */
 
     .grid {
         grid-template-columns: 1fr;
     }
 
-    /* CARDS */
+    /* =========================
+       CARDS
+    ========================= */
 
     .card {
         min-height: auto;
+
+        padding: 1.2rem;
+    }
+
+    .card h3 {
+        font-size: 1.4rem;
+    }
+
+    .card p {
+        font-size: 0.95rem;
     }
 }
 
