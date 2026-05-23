@@ -11,7 +11,7 @@
     --bg-color: #0a0a0a;
     --text-color: #a9b1d6;
     --accent-color: #9ece6a;
-    --accent-glow: 0px 0px 10px rgba(158, 206, 106, 0.4);
+    --accent-glow: 0px 0px 12px rgba(158, 206, 106, 0.35);
     --card-bg: #16161e;
     --border-color: #24283b;
 }
@@ -33,8 +33,11 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+
     font-family: 'pixel2', monospace;
-    line-height: 1.7;
+
+    line-height: 1.8;
+
     min-height: 100vh;
 }
 
@@ -57,10 +60,21 @@ a:hover {
 ========================= */
 
 header {
+
+    width: 100%;
+    max-width: 760px;
+
+    margin: auto;
+
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 5%;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 1rem;
+
+    padding: 2rem 1rem;
+
     border-bottom: 1px solid var(--border-color);
 
     position: sticky;
@@ -70,25 +84,34 @@ header {
     backdrop-filter: blur(4px);
 
     z-index: 999;
-    gap: 2rem;
 }
 
 /* =========================
-   HEADER LEFT
+   HEADER TOP
 ========================= */
 
 .headL {
+
+    width: 100%;
+
     display: flex;
+
+    justify-content: space-between;
+
     align-items: center;
-    gap: 1.5rem;
+
+    gap: 1rem;
 }
 
 .name {
+
     font-size: 2rem;
+
     color: var(--accent-color);
-    font-weight: bold;
-    white-space: nowrap;
+
     text-shadow: var(--accent-glow);
+
+    white-space: nowrap;
 }
 
 /* =========================
@@ -96,48 +119,61 @@ header {
 ========================= */
 
 .mobile-menu-btn {
-    display: block;
 
     color: var(--accent-color);
+
     background-color: var(--card-bg);
 
     border: 1px solid var(--border-color);
 
-    padding: 0.7rem 1rem;
+    padding: 0.5rem 0.8rem;
 
     cursor: pointer;
 
     transition: 0.2s ease;
 
-    width: fit-content;
+    font-size: 0.9rem;
 
-    font-size: 1rem;
+    white-space: nowrap;
 }
 
 .mobile-menu-btn:hover {
+
     border-color: var(--accent-color);
+
     box-shadow: var(--accent-glow);
+
     transform: translateY(-2px);
 }
 
 /* =========================
-   NAVIGATION
+   NAV
 ========================= */
 
 .headR {
+
+    display: none;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 1rem;
+
+    padding-top: 1rem;
+
+    border-top: 1px dashed var(--border-color);
+
+    animation: terminalFade 0.2s ease;
+}
+
+.headR.active {
     display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    font-size: 1.3rem;
 }
 
-.nav-item {
-    transition: 0.2s ease;
-}
-
-.nav-item:hover {
-    transform: translateY(-2px);
+.nav-item::before {
+    content: ">> ";
+    color: var(--accent-color);
 }
 
 /* =========================
@@ -145,12 +181,13 @@ header {
 ========================= */
 
 .container {
-    width: 90%;
-    max-width: 1100px;
+
+    width: 100%;
+    max-width: 760px;
 
     margin: auto;
 
-    padding: 3rem 0;
+    padding: 2rem 1rem;
 }
 
 /* =========================
@@ -162,8 +199,7 @@ header {
 }
 
 .hero-box {
-    width: 100%;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 /* =========================
@@ -171,13 +207,14 @@ header {
 ========================= */
 
 .boot-log {
+
     color: #565f89;
 
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
-    line-height: 1.4;
+    font-size: 0.85rem;
 
-    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .boot-log p {
@@ -189,15 +226,16 @@ header {
 ========================= */
 
 .home1 h1 {
+
     font-size: 4rem;
+
+    line-height: 1.1;
 
     color: var(--accent-color);
 
     text-shadow: var(--accent-glow);
 
     margin-bottom: 2rem;
-
-    letter-spacing: 0.15rem;
 }
 
 /* =========================
@@ -205,25 +243,25 @@ header {
 ========================= */
 
 .subtitle {
-    font-size: 1.5rem;
+
+    font-size: 1.3rem;
 
     color: #c0caf5;
 
     margin-bottom: 1.5rem;
 
-    max-width: 900px;
-
     line-height: 1.8;
 }
 
 .AboutMe {
-    color: #9aa5ce;
 
-    max-width: 850px;
+    color: #9aa5ce;
 
     margin-bottom: 1rem;
 
     line-height: 1.8;
+
+    font-size: 1rem;
 }
 
 /* =========================
@@ -231,17 +269,18 @@ header {
 ========================= */
 
 .terminal-box {
+
     background-color: var(--card-bg);
 
     border: 1px solid var(--border-color);
 
-    padding: 1.8rem;
+    padding: 1.5rem;
 
     border-radius: 4px;
 }
 
 /* =========================
-   TERMINAL PROMPT
+   PROMPT
 ========================= */
 
 .prompt {
@@ -258,11 +297,12 @@ header {
 }
 
 .content-section h2 {
+
     color: var(--accent-color);
 
-    font-size: 2.5rem;
+    font-size: 2rem;
 
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     border-bottom: 1px dashed var(--border-color);
 
@@ -276,16 +316,23 @@ header {
 ========================= */
 
 .clean-list {
+
     list-style: none;
+
     margin-top: 1rem;
 }
 
 .clean-list li {
+
     margin-bottom: 1rem;
+
+    line-height: 1.7;
 }
 
 .clean-list li::before {
+
     content: ">> ";
+
     color: var(--accent-color);
 }
 
@@ -294,9 +341,10 @@ header {
 ========================= */
 
 .grid {
+
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
 
     gap: 1.5rem;
 }
@@ -306,6 +354,7 @@ header {
 ========================= */
 
 .card {
+
     background-color: var(--card-bg);
 
     border: 1px solid var(--border-color);
@@ -317,12 +366,11 @@ header {
     display: block;
 
     color: inherit;
-
-    min-height: 220px;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+
+    transform: translateY(-4px);
 
     border-color: var(--accent-color);
 
@@ -330,17 +378,19 @@ header {
 }
 
 .card h3 {
+
     color: var(--accent-color);
 
     margin-bottom: 1rem;
 
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 }
 
 .card p {
+
     font-size: 1rem;
 
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 /* =========================
@@ -348,15 +398,21 @@ header {
 ========================= */
 
 footer {
+
+    width: 100%;
+    max-width: 760px;
+
+    margin: auto;
+
     text-align: center;
 
-    padding: 2rem;
+    padding: 2rem 1rem;
 
     border-top: 1px solid var(--border-color);
 
     color: #565f89;
 
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 /* =========================
@@ -365,170 +421,40 @@ footer {
 
 @media (max-width: 768px) {
 
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-
-        gap: 1rem;
-
-        padding: 1.2rem 1rem;
-    }
-
-    .headL {
-        width: 100%;
-
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        gap: 1rem;
-    }
-
     .name {
         font-size: 1.5rem;
     }
 
-    /* =========================
-       LS BUTTON
-    ========================= */
-
     .mobile-menu-btn {
 
-        font-size: 0.8rem;
+        font-size: 0.75rem;
 
-        padding: 0.5rem 0.7rem;
-
-        white-space: nowrap;
-    }
-
-    /* =========================
-       NAV
-    ========================= */
-
-    .headR {
-        display: none;
-
-        flex-direction: column;
-
-        width: 100%;
-
-        gap: 1rem;
-
-        padding-top: 1rem;
-
-        border-top: 1px dashed var(--border-color);
-
-        animation: terminalFade 0.2s ease;
-    }
-
-    .headR.active {
-        display: flex;
-    }
-
-    .nav-item {
-        width: 100%;
-    }
-
-    .nav-item::before {
-        content: ">> ";
-        color: var(--accent-color);
-    }
-
-    /* =========================
-       MAIN CONTAINER
-    ========================= */
-
-    .container {
-        width: 100%;
-
-        padding: 1.5rem 1rem;
-    }
-
-    /* =========================
-       HERO BOX
-    ========================= */
-
-    .hero-box {
-        padding: 1.2rem;
-    }
-
-    .boot-log {
-        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
     }
 
     .home1 h1 {
-        font-size: 2.4rem;
 
-        line-height: 1.2;
-
-        margin-bottom: 1.5rem;
+        font-size: 2.8rem;
     }
 
     .subtitle {
+
         font-size: 1rem;
-
-        line-height: 1.8;
-
-        margin-bottom: 1.2rem;
     }
 
     .AboutMe {
+
         font-size: 0.95rem;
-
-        line-height: 1.8;
     }
-
-    /* =========================
-       SECTION TITLES
-    ========================= */
 
     .content-section h2 {
-        font-size: 1.7rem;
-    }
 
-    /* =========================
-       TERMINAL BOX
-    ========================= */
-
-    .terminal-box {
-        padding: 1.2rem;
-    }
-
-    /* =========================
-       GRID
-    ========================= */
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* =========================
-       CARDS
-    ========================= */
-
-    .card {
-        min-height: auto;
-
-        padding: 1.2rem;
-    }
-
-    .card h3 {
-        font-size: 1.4rem;
-    }
-
-    .card p {
-        font-size: 0.95rem;
+        font-size: 1.6rem;
     }
 }
 
 /* =========================
-   ANIMATIONS
+   ANIMATION
 ========================= */
 
 @keyframes terminalFade {
@@ -543,5 +469,3 @@ footer {
         transform: translateY(0);
     }
 }
-```
-
