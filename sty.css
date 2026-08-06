@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'pixel2';
-    src: url('fonts/vt323/VT323-Regular.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 /* =========================
    ROOT
@@ -10,6 +7,8 @@
 :root {
     --bg-color: #0a0a0a;
     --text-color: #a9b1d6;
+    --text-dim: #565f89;
+    --text-bright: #c0caf5;
     --accent-color: #9ece6a;
     --accent-glow: 0px 0px 12px rgba(158, 206, 106, 0.35);
     --card-bg: #16161e;
@@ -26,23 +25,29 @@
     box-sizing: border-box;
 }
 
-/* =========================
-   BODY
-========================= */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-
-    font-family: 'pixel2', monospace;
-
+    font-family: 'VT323', monospace;
+    font-size: 1.15rem;
     line-height: 1.8;
-
     min-height: 100vh;
 }
 
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
 /* =========================
-   LINKS
+   LINKS -- clickable, gets glow
 ========================= */
 
 a {
@@ -56,94 +61,92 @@ a:hover {
 }
 
 /* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+::selection {
+    background: var(--accent-color);
+    color: #0a0a0a;
+}
+
+/* =========================
    HEADER
 ========================= */
 
 header {
-
     width: 100%;
-    max-width: 760px;
-
+    max-width: 780px;
     margin: auto;
-
     display: flex;
     flex-direction: column;
-
     align-items: flex-start;
-
     gap: 1rem;
-
     padding: 2rem 1rem;
-
     border-bottom: 1px solid var(--border-color);
-
     position: sticky;
     top: 0;
-
     background-color: rgba(10, 10, 10, 0.96);
     backdrop-filter: blur(4px);
-
     z-index: 999;
 }
 
-/* =========================
-   HEADER TOP
-========================= */
-
 .headL {
-
     width: 100%;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     gap: 1rem;
 }
 
-.name {
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-    font-size: 2rem;
-
+.prompt {
     color: var(--accent-color);
+}
 
+.name {
+    font-size: 1.9rem;
+    color: var(--accent-color);
     text-shadow: var(--accent-glow);
-
     white-space: nowrap;
 }
 
 /* =========================
-   LS BUTTON
+   LS BUTTON -- clickable, gets glow on hover
 ========================= */
 
 .mobile-menu-btn {
-
     color: var(--accent-color);
-
     background-color: var(--card-bg);
-
     border: 1px solid var(--border-color);
-
     padding: 0.5rem 0.8rem;
-
     cursor: pointer;
-
     transition: 0.2s ease;
-
-    font-size: 0.9rem;
-
+    font-family: inherit;
+    font-size: 1rem;
     white-space: nowrap;
 }
 
 .mobile-menu-btn:hover {
-
     border-color: var(--accent-color);
-
     box-shadow: var(--accent-glow);
-
-    transform: translateY(-2px);
 }
 
 /* =========================
@@ -151,19 +154,12 @@ header {
 ========================= */
 
 .headR {
-
     display: none;
-
     flex-direction: column;
-
     width: 100%;
-
     gap: 0.8rem;
-
     padding-top: 1rem;
-
     border-top: 1px dashed var(--border-color);
-
     animation: terminalFade 0.2s ease;
 }
 
@@ -171,22 +167,19 @@ header {
     display: flex;
 }
 
-.nav-item::before {
+.headR a::before {
     content: ">> ";
     color: var(--accent-color);
 }
 
 /* =========================
-   MAIN
+   MAIN / CONTAINER
 ========================= */
 
 .container {
-
     width: 100%;
-    max-width: 760px;
-
+    max-width: 780px;
     margin: auto;
-
     padding: 2rem 1rem;
 }
 
@@ -194,26 +187,18 @@ header {
    HERO
 ========================= */
 
-.home1_flex {
-    margin-bottom: 5rem;
+.hero {
+    margin-bottom: 3rem;
 }
 
 .hero-box {
     padding: 1.5rem;
 }
 
-/* =========================
-   BOOT LOG
-========================= */
-
 .boot-log {
-
-    color: #565f89;
-
+    color: var(--text-dim);
     margin-bottom: 1.5rem;
-
-    font-size: 0.85rem;
-
+    font-size: 0.95rem;
     line-height: 1.5;
 }
 
@@ -221,71 +206,95 @@ header {
     margin-bottom: 0.2rem;
 }
 
-/* =========================
-   HERO TITLE
-========================= */
-
-.home1 h1 {
-
-    font-size: 4rem;
-
-    line-height: 1.1;
-
+.hero h1 {
+    font-size: 1.4rem;
+    font-weight: normal;
     color: var(--accent-color);
-
-    text-shadow: var(--accent-glow);
-
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 
-/* =========================
-   HERO TEXT
-========================= */
+.hero h2 {
+    font-size: 3.4rem;
+    font-weight: normal;
+    color: var(--text-bright);
+    text-shadow: var(--accent-glow);
+    margin-bottom: 1rem;
+    line-height: 1;
+}
 
 .subtitle {
-
     font-size: 1.3rem;
-
-    color: #c0caf5;
-
-    margin-bottom: 1.5rem;
-
-    line-height: 1.8;
+    color: var(--text-bright);
+    margin-bottom: 1.2rem;
 }
 
-.AboutMe {
-
-    color: #9aa5ce;
-
+.about {
+    color: var(--text-color);
     margin-bottom: 1rem;
-
-    line-height: 1.8;
-
-    font-size: 1rem;
+    max-width: 640px;
+    font-size: 1.1rem;
 }
 
 /* =========================
-   TERMINAL BOX
+   GITHUB WIDGETS -- not clickable, no glow
+========================= */
+
+.github-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.github-section img {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================
+   QUICK INFO -- not clickable, no glow
+========================= */
+
+.quick-info {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.quick-info div {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+}
+
+.quick-info strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--accent-color);
+    font-size: 0.95rem;
+}
+
+.quick-info span {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+}
+
+/* =========================
+   TERMINAL BOX -- not clickable, no glow
 ========================= */
 
 .terminal-box {
-
     background-color: var(--card-bg);
-
     border: 1px solid var(--border-color);
-
     padding: 1.5rem;
-
     border-radius: 4px;
 }
 
-/* =========================
-   PROMPT
-========================= */
-
-.prompt {
-    color: var(--accent-color);
-    margin-right: 0.5rem;
+.terminal-box > p:first-child {
+    margin-bottom: 0.5rem;
 }
 
 /* =========================
@@ -293,22 +302,17 @@ header {
 ========================= */
 
 .content-section {
-    margin-bottom: 5rem;
+    margin: 5rem 0;
 }
 
 .content-section h2 {
-
     color: var(--accent-color);
-
     font-size: 2rem;
-
+    font-weight: normal;
     margin-bottom: 1.5rem;
-
     border-bottom: 1px dashed var(--border-color);
-
     display: inline-block;
-
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
 }
 
 /* =========================
@@ -316,93 +320,232 @@ header {
 ========================= */
 
 .clean-list {
-
-    list-style: none;
-
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .clean-list li {
-
-    margin-bottom: 1rem;
-
+    margin-bottom: 0.9rem;
     line-height: 1.7;
+    color: var(--text-color);
 }
 
 .clean-list li::before {
-
     content: ">> ";
-
     color: var(--accent-color);
 }
 
 /* =========================
-   GRID
+   STACK GRID -- static, no glow
 ========================= */
 
-.grid {
-
+.stack-grid {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+}
 
-    grid-template-columns: repeat(2, 1fr);
+.stack-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
+}
 
-    gap: 1.5rem;
+.stack-card h3 {
+    color: var(--accent-color);
+    font-weight: normal;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 0.4rem;
+}
+
+.stack-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.stack-card li {
+    color: var(--text-color);
+    font-size: 1.05rem;
+}
+
+.stack-card li::before {
+    content: "> ";
+    color: var(--accent-color);
 }
 
 /* =========================
-   CARDS
+   EXPERIENCE TIMELINE -- not clickable, no glow
 ========================= */
 
-.card {
-
-    background-color: var(--card-bg);
-
-    border: 1px solid var(--border-color);
-
-    padding: 1.5rem;
-
-    transition: 0.2s ease;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: flex-start;
-
-    color: inherit;
-
-    min-height: 260px;
+.timeline-item {
+    padding-left: 1rem;
+    border-left: 2px solid var(--accent-color);
 }
 
-.card:hover {
+.timeline-item h3 {
+    color: var(--text-bright);
+    font-weight: normal;
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+}
 
+.timeline-item span {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+}
+
+.timeline-item p {
+    margin: 0.75rem 0;
+    color: var(--text-color);
+}
+
+.timeline-item ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.timeline-item li {
+    color: var(--text-color);
+    position: relative;
+    padding-left: 1.1rem;
+}
+
+.timeline-item li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* =========================
+   CARDS (projects) -- clickable, gets glow
+========================= */
+
+.grid,
+.repo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.card,
+.repo-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    transition: 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    color: inherit;
+    min-height: 220px;
+}
+
+a.card:hover,
+.repo-card:hover {
     transform: translateY(-4px);
-
     border-color: var(--accent-color);
-
     box-shadow: var(--accent-glow);
 }
 
-.card h3 {
-
+.card h3,
+.repo-card h3 {
     color: var(--accent-color);
-
-    margin-bottom: 1rem;
-
-    font-size: 1.7rem;
-
+    font-weight: normal;
+    margin-bottom: 0.25rem;
+    font-size: 1.6rem;
     border-bottom: 1px dashed var(--border-color);
-
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
 }
 
-.card p {
+.repo-tags {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: -0.5rem;
+}
 
-    font-size: 1rem;
-
+.card p,
+.repo-card p {
+    font-size: 1.05rem;
     line-height: 1.8;
-
+    color: var(--text-color);
     flex-grow: 1;
+}
+
+.repo-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.repo-card li {
+    color: var(--text-color);
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 1.02rem;
+}
+
+.repo-card li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.repo-card > a {
+    margin-top: auto;
+}
+
+.card-link {
+    margin-top: auto;
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+/* private repo tag -- not clickable, no glow */
+
+.private-tag {
+    margin-top: auto;
+    display: inline-block;
+    width: max-content;
+    background: #2b1a1a;
+    color: #f7768e;
+    border: 1px solid #4c2626;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.95rem;
+}
+
+/* =========================
+   ROADMAP -- not clickable, no glow
+========================= */
+
+.roadmap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.roadmap li {
+    color: var(--text-color);
+    padding: 0.75rem 1rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+#contact p {
+    margin-bottom: 1rem;
+}
+
+#contact strong {
+    color: var(--accent-color);
 }
 
 /* =========================
@@ -410,46 +553,32 @@ header {
 ========================= */
 
 footer {
-
     width: 100%;
-    max-width: 760px;
-
-    margin: auto;
-
+    max-width: 780px;
+    margin: 3rem auto 2rem;
     text-align: center;
-
     padding: 2rem 1rem;
-
     border-top: 1px solid var(--border-color);
+    color: var(--text-dim);
+    font-size: 1rem;
+}
 
-    color: #565f89;
+.footer-box {
+    text-align: left;
+}
 
-    font-size: 0.9rem;
+.footer-box p {
+    margin: 0.4rem 0;
 }
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
-
-@media (max-width: 768px)
 
 @media (max-width: 768px) {
 
     .headR {
-
         display: none;
-
-        flex-direction: column;
-
-        width: 100%;
-
-        gap: 1rem;
-
-        padding-top: 1rem;
-
-        border-top: 1px dashed var(--border-color);
-
-        animation: terminalFade 0.2s ease;
     }
 
     .headR.active {
@@ -461,52 +590,62 @@ footer {
     }
 
     .mobile-menu-btn {
-
-        font-size: 0.75rem;
-
-        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.7rem;
     }
 
-    .grid {
-
+    .grid,
+    .repo-grid,
+    .stack-grid {
         grid-template-columns: 1fr;
     }
 
-    .card {
+    .card,
+    .repo-card {
         min-height: auto;
     }
 
-    .home1 h1 {
+    .quick-info {
+        grid-template-columns: 1fr;
+    }
 
-        font-size: 2.8rem;
+    .hero h2 {
+        font-size: 2.4rem;
     }
 
     .subtitle {
-
-        font-size: 1rem;
-    }
-
-    .AboutMe {
-
-        font-size: 0.95rem;
+        font-size: 1.05rem;
     }
 
     .content-section h2 {
-
         font-size: 1.6rem;
     }
 }
+
 /* =========================
    ANIMATION
 ========================= */
 
 @keyframes terminalFade {
-
     from {
         opacity: 0;
         transform: translateY(-5px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+.content-section {
+    animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
     to {
         opacity: 1;
         transform: translateY(0);
